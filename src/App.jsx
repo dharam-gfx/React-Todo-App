@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react'
+import TODO from './Pages/TODO'
+import { ThemeProvider } from './context/theme'
+import { ThemeButton } from './Components/ThemeButton';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [themeMode, setThemeMode] = useState( localStorage.getItem( "themeMode" ) || "light" );
+  const darkTheme = () => {
+    setThemeMode( "dark" );
+  }
+  const lightTheme = () => {
+    setThemeMode( "light" );
+  }
+
+  useEffect( () => {
+    const root = document.querySelector( "html" );
+    root.classList.remove( "dark", "light" );
+    root.classList.add( themeMode );
+    localStorage.setItem( "themeMode", themeMode )
+  }, [themeMode] )
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div >
+      <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
+        <ThemeButton />
+      </ThemeProvider>
+      <TODO />
+    </div>
   )
 }
+
 
 export default App
