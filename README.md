@@ -6,7 +6,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ![httpsgithub dharam_gfx](https://raw.githubusercontent.com/dharam-gfx/React-Todo-App/main/public/TodoAppImage.png)
 
-## View live preview [here](#)
+## View live preview [here](https://my-todo-app-v1-1.netlify.app/)
 
 # Installation :arrow_down:
 
@@ -39,4 +39,4 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:5173]http://localhost:5173) with your browser to see the result.
